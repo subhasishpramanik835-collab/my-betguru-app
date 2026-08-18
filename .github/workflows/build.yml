@@ -1,4 +1,4 @@
-name: Build Production Android APK
+name: Build Android APK
 
 on:
   push:
@@ -24,12 +24,12 @@ jobs:
         with:
           gradle-version: '8.4'
 
-      - name: Build Release APK with Gradle
-        run: gradle assembleRelease --stacktrace
+      - name: Build Android APK with Gradle
+        run: gradle assembleDebug --stacktrace
 
-      - name: Upload Signed Release APK
+      - name: Upload Signed APK
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
-          path: app/build/outputs/apk/release/*.apk
+          name: app-apk
+          path: app/build/outputs/apk/debug/*.apk
           retention-days: 14
